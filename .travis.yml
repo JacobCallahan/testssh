@@ -1,0 +1,10 @@
+sudo: required
+language: python
+python:
+    - "3.6"
+services:
+    - docker
+before_install:
+        - docker run -d -P -p 12345:22 --name tinyssh rastasheep/ubuntu-sshd
+install: pip install -r requirements.txt
+script: pytest
